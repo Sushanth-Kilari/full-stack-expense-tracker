@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Week 02 - JavaScript ES6 &amp; DOM</title>
+  <style>
+    body { font-family: "Segoe UI", Arial, sans-serif; max-width: 520px; margin: 2rem auto; color: #1f2933; }
+    input, button { padding: 0.4rem 0.6rem; font: inherit; }
+    li { margin: 0.3rem 0; }
+    li button { margin-left: 0.5rem; }
+    #total { font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>Expense Manager</h1>
+  <input id="descInput" placeholder="Description">
+  <input id="amountInput" type="number" min="1" placeholder="Amount">
+  <button id="addBtn">Add</button>
+  <ul id="expenseList"></ul>
+  <p id="total">Total: 0</p>
+
+  <h2>Friends to Split With (fetched)</h2>
+  <button id="loadBtn">Load Friends</button>
+  <ul id="friendList"></ul>
+
+  <script src="app.js"></script>
+</body>
+</html>

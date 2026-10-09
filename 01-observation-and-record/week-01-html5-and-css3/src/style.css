@@ -1,0 +1,48 @@
+:root {
+  --brand: #0f766e;
+  --brand-dark: #115e59;
+  --bg: #f4f7f6;
+  --text: #1f2933;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* Flexbox header */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: var(--brand);
+  color: #fff;
+}
+.site-header nav a { color: #fff; margin-left: 1rem; text-decoration: none; }
+.site-header nav a:hover { text-decoration: underline; }
+
+main { max-width: 900px; margin: 0 auto; padding: 1.5rem; }
+
+/* Flexbox card row */
+.card-row { display: flex; gap: 1rem; flex-wrap: wrap; }
+.card {
+  flex: 1 1 220px;
+  background: #fff;
+  padding: 1rem 1.25rem;
+  border-radius: 8px;
+  border-top: 4px solid var(--brand);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+}
+
+/* Form */
+form { display: grid; gap: 0.5rem; max-width: 420px; }
+input, select, textarea { padding: 0.5rem; border: 1px solid #b6c2c0; border-radius: 4px; font: inherit; }
+button { padding: 0.6rem; background: var(--brand); color: #fff; border: 0; border-radius: 4px; cursor: pointer; }
+button:hover { background: var(--brand-dark); }
+
+footer { text-align: center; padding: 1rem; color: #52606d; }

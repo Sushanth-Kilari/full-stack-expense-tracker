@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Navbar</title>
+  <style>
+    body { margin: 0; font-family: "Segoe UI", Arial, sans-serif; }
+    nav { background: #0f766e; display: flex; align-items: center; justify-content: space-between; padding: 0 1rem; }
+    nav .brand { color: #fff; font-weight: bold; }
+    nav ul { list-style: none; display: flex; margin: 0; padding: 0; }
+    nav a { display: block; padding: 1rem; color: #fff; text-decoration: none; }
+    nav a:hover { background: #115e59; }
+    #menu-toggle { display: none; background: none; border: 0; color: #fff; font-size: 1.5rem; }
+
+    @media (max-width: 600px) {
+      #menu-toggle { display: block; }
+      nav { flex-wrap: wrap; }
+      nav ul { display: none; flex-direction: column; width: 100%; }
+      nav ul.open { display: flex; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <span class="brand">ExpenseWise</span>
+    <button id="menu-toggle" aria-label="Toggle menu">&#9776;</button>
+    <ul id="menu">
+      <li><a href="#">Dashboard</a></li>
+      <li><a href="#">Expenses</a></li>
+      <li><a href="#">Reports</a></li>
+      <li><a href="#">Settings</a></li>
+    </ul>
+  </nav>
+
+  <script>
+    document.getElementById("menu-toggle").addEventListener("click", () => {
+      document.getElementById("menu").classList.toggle("open");
+    });
+  </script>
+</body>
+</html>

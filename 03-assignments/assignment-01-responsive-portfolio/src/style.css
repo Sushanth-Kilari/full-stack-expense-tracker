@@ -1,0 +1,47 @@
+:root { --brand: #0f766e; --brand-dark: #115e59; --bg: #f4f7f6; --text: #1f2933; }
+
+* { box-sizing: border-box; }
+body { margin: 0; font-family: "Segoe UI", Arial, sans-serif; background: var(--bg); color: var(--text); }
+
+.hero {
+  text-align: center;
+  padding: 4rem 1rem;
+  background: linear-gradient(135deg, var(--brand), #14b8a6);
+  color: #fff;
+}
+.hero h1 { margin: 0 0 0.5rem; font-size: 2.5rem; }
+.btn {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.7rem 1.4rem;
+  background: #fff;
+  color: var(--brand-dark);
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+main { max-width: 1000px; margin: 0 auto; padding: 1rem 1.5rem; }
+section { margin-bottom: 2rem; }
+
+/* Grid: 4 columns on desktop, 2 on tablet, 1 on phone */
+.grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+.grid article { background: #fff; padding: 1rem; border-radius: 8px; box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12); }
+.grid h3 { margin: 0; font-size: 0.95rem; color: #52606d; }
+.figure { margin: 0.4rem 0 0; font-size: 1.4rem; font-weight: 700; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 0.5rem; list-style: none; padding: 0; }
+.chips li { background: #ccfbf1; color: var(--brand-dark); padding: 0.35rem 0.9rem; border-radius: 999px; }
+
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 8px; overflow: hidden; }
+th, td { padding: 0.7rem 1rem; text-align: left; border-bottom: 1px solid #e4e7eb; white-space: nowrap; }
+th { background: var(--brand); color: #fff; }
+
+footer { text-align: center; padding: 1rem; color: #52606d; }
+
+@media (max-width: 800px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px) {
+  .grid { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 1.8rem; }
+}

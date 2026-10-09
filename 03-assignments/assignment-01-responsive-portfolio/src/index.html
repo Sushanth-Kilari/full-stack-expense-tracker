@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ExpenseWise Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="hero">
+    <h1>ExpenseWise</h1>
+    <p>Know where every rupee goes</p>
+    <a href="#recent" class="btn">View Recent Expenses</a>
+  </header>
+
+  <main>
+    <section id="summary">
+      <h2>This Month</h2>
+      <div class="grid">
+        <article><h3>Total Spent</h3><p class="figure">Rs. 12,450</p></article>
+        <article><h3>Budget Left</h3><p class="figure">Rs. 7,550</p></article>
+        <article><h3>Top Category</h3><p class="figure">Bills</p></article>
+        <article><h3>Transactions</h3><p class="figure">23</p></article>
+      </div>
+    </section>
+
+    <section id="categories">
+      <h2>Categories</h2>
+      <ul class="chips">
+        <li>Food</li><li>Travel</li><li>Bills</li><li>Shopping</li><li>Health</li>
+      </ul>
+    </section>
+
+    <section id="recent">
+      <h2>Recent Expenses</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Date</th><th>Title</th><th>Category</th><th>Amount</th></tr></thead>
+          <tbody>
+            <tr><td>08 Oct</td><td>Groceries</td><td>Food</td><td>Rs. 850</td></tr>
+            <tr><td>07 Oct</td><td>Metro card recharge</td><td>Travel</td><td>Rs. 500</td></tr>
+            <tr><td>05 Oct</td><td>Electricity bill</td><td>Bills</td><td>Rs. 1,320</td></tr>
+            <tr><td>03 Oct</td><td>Notebook and pens</td><td>Shopping</td><td>Rs. 240</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer><p>Contact: support@expensewise.example</p></footer>
+</body>
+</html>

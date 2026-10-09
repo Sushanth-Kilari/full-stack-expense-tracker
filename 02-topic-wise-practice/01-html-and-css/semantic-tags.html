@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Semantic Tags</title>
+</head>
+<body>
+  <header>
+    <h1>Monthly Expense Report</h1>
+    <nav><a href="#summary">Summary</a> | <a href="#details">Details</a></nav>
+  </header>
+
+  <main>
+    <section id="summary">
+      <h2>Summary</h2>
+      <p>Total spent in <time datetime="2026-10">October 2026</time>: <strong>Rs. 12,450</strong></p>
+    </section>
+
+    <section id="details">
+      <h2>Details</h2>
+      <article>
+        <h3>Food</h3>
+        <p>Groceries, snacks and dining out.</p>
+      </article>
+      <article>
+        <h3>Travel</h3>
+        <p>Metro, bus and cab rides.</p>
+      </article>
+
+      <figure>
+        <figcaption>Spending by category</figcaption>
+        <table>
+          <thead><tr><th>Category</th><th>Amount</th></tr></thead>
+          <tbody>
+            <tr><td>Food</td><td>4,200</td></tr>
+            <tr><td>Travel</td><td>2,100</td></tr>
+            <tr><td>Bills</td><td>6,150</td></tr>
+          </tbody>
+        </table>
+      </figure>
+    </section>
+
+    <aside>
+      <p>Tip: review your biggest category first.</p>
+    </aside>
+  </main>
+
+  <footer><small>&copy; 2026 ExpenseWise</small></footer>
+</body>
+</html>

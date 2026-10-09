@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Savings Goals</title>
+  <style>
+    body { font-family: "Segoe UI", Arial, sans-serif; max-width: 560px; margin: 2rem auto; padding: 0 1rem; color: #1f2933; }
+    h1 { color: #0f766e; }
+    form { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 1rem; }
+    input, button { padding: 0.45rem 0.6rem; font: inherit; }
+    button { background: #0f766e; color: #fff; border: 0; border-radius: 4px; cursor: pointer; }
+    .goal { border: 1px solid #d5dbe0; border-radius: 8px; padding: 0.8rem; margin-bottom: 0.8rem; }
+    .bar { background: #e5e7eb; border-radius: 4px; overflow: hidden; margin: 0.4rem 0; }
+    .bar div { background: #14b8a6; color: #fff; font-size: 0.8rem; padding: 2px 6px; white-space: nowrap; }
+    #stats { font-weight: 600; }
+    .error { color: #b91c1c; }
+  </style>
+</head>
+<body>
+  <h1>Savings Goals</h1>
+  <p id="stats"></p>
+
+  <form id="goalForm">
+    <input id="name" placeholder="Goal name" required>
+    <input id="target" type="number" min="1" placeholder="Target (Rs.)" required>
+    <button type="submit">Add Goal</button>
+  </form>
+  <p id="error" class="error"></p>
+
+  <div id="goals"></div>
+
+  <script>
+    const api = "/api";
+    const goalsEl = document.getElementById("goals");
+    const errorEl = document.getElementById("error");
+
+    async function refresh() {
+      const [goals, stats] = await Promise.all([
+        fetch(`${api}/goals`).then((r) => r.json()),
+        fetch(`${api}/stats`).then((r) => r.json()),
+      ]);
+      document.getElementById("stats").textContent =
+        `${stats.goals} goals | Saved Rs. ${stats.saved} of Rs. ${stats.target}`;
+
+      goalsEl.innerHTML = goals.map((g) => `
+        <div class="goal">
+          <strong>${g.name}</strong> - Rs. ${g.saved} / Rs. ${g.target}
+          <div class="bar"><div style="width:${Math.max(g.progress, 8)}%">${g.progress}%</div></div>
+          <button onclick="deposit('${g._id}')">+ Rs. 500</button>
+          <button onclick="removeGoal('${g._id}')">Delete</button>
+        </div>`).join("");
+    }
+
+    document.getElementById("goalForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      errorEl.textContent = "";
+      const res = await fetch(`${api}/goals`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: document.getElementById("name").value,
+          target: Number(document.getElementById("target").value),
+        }),
+      });
+      if (!res.ok) errorEl.textContent = (await res.json()).error;
+      e.target.reset();
+      refresh();
+    });
+
+    async function deposit(id) {
+      await fetch(`${api}/goals/${id}/deposit`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ amount: 500 }),
+      });
+      refresh();
+    }
+
+    async function removeGoal(id) {
+      await fetch(`${api}/goals/${id}`, { method: "DELETE" });
+      refresh();
+    }
+
+    refresh();
+  </script>
+</body>
+</html>

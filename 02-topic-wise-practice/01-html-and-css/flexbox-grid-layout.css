@@ -1,0 +1,46 @@
+/* Flexbox: centre a toolbar and space its items */
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  background: #0f766e;
+  color: #fff;
+}
+
+/* Grid: responsive expense-summary tiles */
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.summary-grid .tile {
+  background: #fff;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+}
+
+/* Grid areas: page layout */
+.layout {
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "sidebar content"
+    "footer footer";
+  grid-template-columns: 220px 1fr;
+}
+.layout > header  { grid-area: header; }
+.layout > aside   { grid-area: sidebar; }
+.layout > main    { grid-area: content; }
+.layout > footer  { grid-area: footer; }
+
+@media (max-width: 600px) {
+  .layout {
+    grid-template-areas: "header" "content" "sidebar" "footer";
+    grid-template-columns: 1fr;
+  }
+}
